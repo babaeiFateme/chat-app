@@ -4,8 +4,8 @@ const socket = new WebSocket(`ws://localhost:4001/${username}`);
 
 let userID = null;
 
-const input = document.querySelector("input");
-const chat = document.querySelector("ul");
+const input = document.querySelector(".message-box");
+const chat = document.querySelector(".messages-chat");
 
 socket.addEventListener("open", () => {
     input.addEventListener("keydown", (event) => {
@@ -21,7 +21,11 @@ socket.addEventListener("open", () => {
         if (data.message) {
             chat.insertAdjacentHTML(
                 "beforeend",
-                `<li class="${data.userID === userID ? "own" : ""}">${data.message}</li>`
+                `${
+                    data.userID === userID
+                        ? `<div class="message"><div class="response"><p class="text">${data.message}</p></div></div>`
+                        : `<div class="message"><p class="text">${data.message}</p></div>`
+                }`
             );
         } else {
             userID = data.userID;

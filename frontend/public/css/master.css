@@ -232,6 +232,12 @@ body {
 
 }
 
+#typingIndicator {
+  display: none;
+  font-style: italic;
+  color: grey;
+}
+
 .chat .messages-chat .message {
   display: flex;
   align-items: center;

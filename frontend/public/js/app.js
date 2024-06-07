@@ -14,7 +14,21 @@ const socket = io("http://localhost:4001", {
 
 const input = document.querySelector(".message-box");
 const chat = document.querySelector(".messages-chat");
+const typingIndicator = document.getElementById("typingIndicator");
 
+let typingTimeout;
+
+input.addEventListener("input", () => {
+    if (input.value) {
+        socket.emit("typing");
+        clearTimeout(typingTimeout);
+        typingTimeout = setTimeout(() => {
+            socket.emit("stopTyping");
+        }, 2000);
+    } else {
+        socket.emit("stopTyping");
+    }
+});
 socket.on("connect", () => {
     input.addEventListener("keydown", (event) => {
         if (event.keyCode === 13) {
@@ -43,4 +57,12 @@ socket.on("connect", () => {
             }`
         );
     });
+});
+
+socket.on("typing", () => {
+    typingIndicator.style.display = "block";
+});
+
+socket.on("stopTyping", () => {
+    typingIndicator.style.display = "none";
 });

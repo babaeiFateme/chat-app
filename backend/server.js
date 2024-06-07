@@ -11,12 +11,13 @@ const io = socketIO(server, {
 });
 
 io.on("connection", (socket) => {
+    console.log(socket.handshake.query , "query");
+    console.log(socket.handshake.headers , "headers");
     socket.on("message", (data) => {
         io.emit("message", {
             id: socket.id,
             message: data,
         });
-        console.log(data);
     });
 });
 

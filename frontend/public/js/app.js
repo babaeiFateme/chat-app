@@ -73,3 +73,43 @@ socket.on("typing", () => {
 socket.on("stopTyping", () => {
     typingIndicator.style.display = "none";
 });
+
+//emoji
+const emojis = [
+    "😀",
+    "😁",
+    "😂",
+    "😃",
+    "😄",
+    "😅",
+    "😆",
+    "😉",
+    "😊",
+    "😋",
+    "😎",
+    "😍",
+]; // Add more emojis as needed
+
+const emojiContainer = document.querySelector(".emoji-container");
+
+const populateEmojis = () => {
+    emojis.forEach((emoji, index) => {
+        const button = document.createElement("button");
+        button.classList.add("emoji-button");
+        button.textContent = emoji;
+        button.addEventListener("click", () => {
+            input.value += emoji;
+        });
+        emojiContainer.appendChild(button);
+    });
+};
+
+populateEmojis();
+
+const emojiSelect = document.querySelector(".emoji-select");
+const emojiKeyboard = document.querySelector(".emoji-keyboard");
+
+emojiSelect.addEventListener("click", () => {
+    console.log("fffff");
+    emojiKeyboard.classList.toggle("d-block");
+});

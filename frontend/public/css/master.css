@@ -394,3 +394,28 @@ body {
   color: #777;
   margin: 0;
 }
+
+.emoji-keyboard {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  max-width: 250px;
+  flex-wrap: wrap;
+  border: 1px solid #dddddd;
+  top: -40px;
+  background-color: #fff;
+  border-radius: 10px;
+  left: 10px;
+}
+
+.emoji-keyboard .emoji-container .emoji-button {
+  max-width: 30px;
+  aspect-ratio: 1;
+  border: unset;
+  background-color: unset;
+  width: 100%;
+}
+
+.d-block {
+  display: block;
+}

@@ -10,5 +10,8 @@
   },
   "keywords": [],
   "author": "fatemeh",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "soket.io": "^0.0.1-security"
+  }
 }

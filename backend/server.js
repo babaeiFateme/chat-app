@@ -11,13 +11,19 @@ const io = socketIO(server, {
 });
 
 io.on("connection", (socket) => {
-    console.log(socket.handshake.query , "query");
-    console.log(socket.handshake.headers , "headers");
+    // console.log(socket.handshake.query , "query");
+    // console.log(socket.handshake.headers , "headers");
     socket.on("message", (data) => {
         io.emit("message", {
             id: socket.id,
             message: data,
         });
+    });
+    socket.on("typing", () => {
+        socket.broadcast.emit("typing", { id: socket.id });
+    });
+    socket.on("stopTyping", () => {
+        socket.broadcast.emit("stopTyping", { id: socket.id });
     });
 });
 

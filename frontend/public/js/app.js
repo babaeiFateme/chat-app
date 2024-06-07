@@ -15,9 +15,16 @@ const socket = io("http://localhost:4001", {
 const input = document.querySelector(".message-box");
 const chat = document.querySelector(".messages-chat");
 const typingIndicator = document.getElementById("typingIndicator");
-
+const sendBtn = document.getElementById("iconSend");
 let typingTimeout;
 
+const sendMessage = () => {
+    const message = input.value.trim();
+    if (message) {
+        socket.emit("message", message);
+        input.value = "";
+    }
+};
 input.addEventListener("input", () => {
     if (input.value) {
         socket.emit("typing");
@@ -32,11 +39,11 @@ input.addEventListener("input", () => {
 socket.on("connect", () => {
     input.addEventListener("keydown", (event) => {
         if (event.keyCode === 13) {
-            if (event.target.value.trim()) {
-                socket.emit("message", event.target.value.trim());
-                input.value = "";
-            }
+            sendMessage();
         }
+    });
+    iconSend.addEventListener("click", () => {
+        sendMessage();
     });
 
     socket.on("message", (data) => {

@@ -1,3 +1,4 @@
+const { log } = require("console");
 const http = require("http");
 const WebSocket = require("ws");
 
@@ -14,20 +15,51 @@ ws.on("headers", (headers) => {
 
 // Event handler for WebSocket server 'connection' event
 ws.on("connection", (socket, req) => {
-    console.log(req.url , "sdfsjkfshf");
     const userID = req.url.slice(1);
     socket.id = userID;
     socket.send(JSON.stringify({ userID }));
 
     socket.on("message", (data) => {
-        ws.clients.forEach((client) => {
-            client.send(
-                JSON.stringify({
-                    userID: socket.id,
-                    message: data.toString(),
-                })
-            );
-        });
+        const message = data.toString();
+        const parsedData = JSON.parse(message);
+        if (parsedData.type === "message") {
+            console.log(parsedData.type , "parsedData.type");
+            ws.clients.forEach((client,index) => {
+                client.send(
+                    JSON.stringify({
+                        userID: socket.id,
+                        message: parsedData.content,
+                    })
+                );
+            });
+        } else if (parsedData.type === "typing") {
+            console.log(222222222);
+            ws.clients.forEach((client, index) => {
+                if (client !== socket && client.readyState === WebSocket.OPEN) {
+                    client.send(
+                        JSON.stringify({
+                            userID: socket.id,
+                            typing: true,
+                        })
+                    );
+                } else if (parsedData.type === "stop_typing") {
+                    ws.clients.forEach((client,index) => {
+                        if (
+                            client !== socket &&
+                            client.readyState === WebSocket.OPEN
+                        ) {
+                            client.send(
+                                JSON.stringify({
+                                    userID: socket.id,
+                                    typing: false,
+                                })
+                            );
+                        }
+                    });
+                    
+                }
+            });
+        }
     });
 });
 

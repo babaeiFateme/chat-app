@@ -1,3 +1,15 @@
+const userForm = document.getElementById("userForm");
+const username = document.getElementById("username");
+const overlay = document.querySelector(".overlay");
+const infoBox = document.querySelector(".get-user-info");
+
+
+userForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    infoBox.remove();
+    overlay.remove();
+});
+
 const socket = io("http://localhost:4001", {
     query: {
         name: "fateme",
@@ -18,6 +30,12 @@ const typingIndicator = document.getElementById("typingIndicator");
 const sendBtn = document.getElementById("iconSend");
 let typingTimeout;
 
+/**
+ * javascript comment
+ * @Author: fateme
+ * @Date: 2024-06-08 00:10:24
+ * @Desc:send input value to back
+ */
 const sendMessage = () => {
     const message = input.value.trim();
     if (message) {
@@ -88,7 +106,7 @@ const emojis = [
     "😋",
     "😎",
     "😍",
-];  
+];
 
 const emojiContainer = document.querySelector(".emoji-container");
 

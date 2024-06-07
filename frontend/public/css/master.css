@@ -227,6 +227,9 @@ body {
 .chat .messages-chat {
   padding: 25px 35px;
   height: 75%;
+  overflow-y: auto;
+  max-height: 473px;
+
 }
 
 .chat .messages-chat .message {

@@ -31,7 +31,7 @@ input.addEventListener("input", () => {
         clearTimeout(typingTimeout);
         typingTimeout = setTimeout(() => {
             socket.emit("stopTyping");
-        }, 2000);
+        }, 4000);
     } else {
         socket.emit("stopTyping");
     }

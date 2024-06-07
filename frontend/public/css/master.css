@@ -13,7 +13,8 @@ body {
 .container {
   padding: 0;
   background-color: #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+ 
   height: 700px;
 }
 
@@ -22,11 +23,8 @@ body {
   float: left;
   height: 700px;
   width: 70px;
-  background: #4768b5;
-  background: -webkit-linear-gradient(#4768b5, #35488e);
-  background: -o-linear-gradient(#4768b5, #35488e);
-  background: -moz-linear-gradient(#4768b5, #35488e);
-  background: linear-gradient(#4768b5, #35488e);
+  background: #6d47b5;
+  background-image: linear-gradient(#835ccb, #3b2067);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
 }
 
@@ -38,23 +36,23 @@ body {
 
 .menu .items .item {
   height: 70px;
-  border-bottom: 1px solid #6780cc;
+  border-bottom: 1px solid #46145d;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #9fb5ef;
+  color: #fff;
   font-size: 17pt;
 }
 
 .menu .items .item-active {
-  background-color: #5172c3;
+  background-color: #8651c3;
   color: #fff;
 }
 
 .menu .items .item:hover {
   cursor: pointer;
-  background-color: #4f6ebd;
-  color: #cfe5ff;
+  background-color: #8651c3;
+  color: #fff;
 }
 
 /* === CONVERSATIONS === */
@@ -237,7 +235,7 @@ body {
 
 .chat .footer-chat .send {
   color: #fff;
-  background-color: #4f6ebd;
+  background-color: #7b5bc0;
   position: absolute;
   right: 40px;
   display: flex;
@@ -245,7 +243,7 @@ body {
   justify-content: center;
   width: 42px;
   height: 42px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-size: 16pt;
 }
 

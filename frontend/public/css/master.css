@@ -235,6 +235,10 @@ body {
   margin-bottom: 8px;
 }
 
+.chat .messages-chat .message p {
+  margin: 0;
+}
+
 .chat .messages-chat .message .photo {
   display: block;
   width: 45px;
@@ -248,7 +252,7 @@ body {
 }
 
 .chat .messages-chat .text {
-  margin: 0 35px;
+
   background-color: #f6f6f6;
   padding: 15px;
   border-radius: 12px;
@@ -374,4 +378,10 @@ body {
   font-size: 24px;
   left: 16px;
   color: gray;
+}
+
+.time {
+  font-size: 0.7rem;
+  color: #777;
+  margin: 0;
 }

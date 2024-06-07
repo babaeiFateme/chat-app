@@ -88,7 +88,7 @@ const emojis = [
     "😋",
     "😎",
     "😍",
-]; // Add more emojis as needed
+];  
 
 const emojiContainer = document.querySelector(".emoji-container");
 
@@ -110,6 +110,5 @@ const emojiSelect = document.querySelector(".emoji-select");
 const emojiKeyboard = document.querySelector(".emoji-keyboard");
 
 emojiSelect.addEventListener("click", () => {
-    console.log("fffff");
     emojiKeyboard.classList.toggle("d-block");
 });
